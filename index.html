@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo拡張版</title>
+</head>
+<body>
+
+  <h2>ToDoリスト</h2>
+
+  <input id="itemInput" placeholder="例：買い物・宿題" type="text">
+  <button onclick="addItem()">追加</button>
+  <button onclick="removeLast()">削除</button>
+  <button onclick="clearAll()">すべて削除</button>
+  <button onclick="searchItem()">検索</button>
+
+  <p id="latestItem">🆕 最近追加されたアイテム：なし</p>
+
+  <ul id="itemList"></ul>
+
+  <script>
+    let items = [];
+
+    function addItem() {
+      let newitem = document.getElementById("itemInput").value;
+      if (newitem === "") return;
+      items.push(newitem);
+      updateList();
+      document.getElementById("itemInput").value = "";
+      document.getElementById("latestItem").innerText = "🆕 最近追加されたアイテム：" + newitem;
+    }
+
+    function removeLast() {
+      items.pop();
+      updateList();
+    }
+
+    function clearAll() {
+      items = [];
+      updateList();
+    }
+
+    function searchItem() {
+      let keyword = document.getElementById("itemInput").value;
+      if (items.includes(keyword)) {
+        alert("✅ 見つかりました！");
+      } else {
+        alert("❌ 見つかりませんでした。");
+      }
+    }
+
+    function updateList() {
+      let listHtml = "";
+      for (let i = 0; i < items.length; i++) {
+        listHtml += "<li>" + items[i] + "</li>";
+      }
+      document.getElementById("itemList").innerHTML = listHtml;
+    }
+  </script>
+
+</body>
+</html>
