@@ -29,7 +29,7 @@ It’s designed as a beginner-friendly project to help practice dynamic UI rende
 
 ## 📸 スクリーンショット / Screenshot
 
-![screenshot](./screenshot.png)
+![screenshot](./js-todo-app-sc.png)
 
 ---
 
